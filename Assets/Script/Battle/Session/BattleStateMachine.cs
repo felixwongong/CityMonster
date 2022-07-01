@@ -1,10 +1,20 @@
+using System;
 using System.Collections.Generic;
+using cofydev.util.StateMachine;
 using UnityEngine;
 
 namespace CM.Battle.Session
 {
-    public class BattleStateMachine : MonoBehaviour, IStateMachine
+    public class BattleStateMachine : UnityStateMachine 
     {
-        [SerializeField] private List<IStateContext> statesInclude;
+        private void Awake()
+        {
+            curStateContext = gameObject.GetComponent<SpawnState>();
+        }
+
+        private void Start()
+        {
+            curStateContext.StartContext();
+        }
     }
 }
