@@ -16,9 +16,11 @@ namespace CM.Battle.Session
         {
         }
 
-        public IEnumerator StartContext()
+        // ReSharper disable Unity.PerformanceAnalysis
+        public IEnumerator StartContext(IStateMachine sm)
         {
-            throw new System.NotImplementedException();
+            print("Now in spawn state");
+            yield return null;
         }
     }
 }

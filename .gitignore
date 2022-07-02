@@ -72,4 +72,4 @@ crashlytics-build.properties
 /[Aa]ssets/[Ss]treamingAssets/aa/*
 
 /[Aa]ssets/[Aa]sset/*
-/Assets/Editor/Plugins/Editor/JetBrains.RiderFlow
+/[Aa]ssets/Editor/Plugins

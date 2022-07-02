@@ -9,11 +9,11 @@ namespace cofydev.util.StateMachine
         protected IStateContext curStateContext = null;
         private Coroutine currentContext;
         
-        public  void GoToNextState(IStateContext context)
+        public void GoToNextState(IStateContext context)
         {
             if(currentContext != null) StopCoroutine(currentContext);
             curStateContext = context;
-            currentContext = StartCoroutine(curStateContext.StartContext());
+            currentContext = StartCoroutine(curStateContext.StartContext(this));
         }
     }
 }

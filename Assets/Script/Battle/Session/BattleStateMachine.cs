@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using cofydev.util.StateMachine;
+using UnityEditor.UI;
 using UnityEngine;
 
 namespace CM.Battle.Session
@@ -9,12 +10,12 @@ namespace CM.Battle.Session
     {
         private void Awake()
         {
-            curStateContext = gameObject.GetComponent<SpawnState>();
+            curStateContext = gameObject.GetComponent<DialogueState>();
         }
 
         private void Start()
         {
-            curStateContext.StartContext();
+            GoToNextState(curStateContext);
         }
     }
 }
