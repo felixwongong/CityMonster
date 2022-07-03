@@ -14,12 +14,10 @@ namespace CM.Battle.Session
         // Update is called once per frame
         private void Update()
         {
-        }
-
-        // ReSharper disable Unity.PerformanceAnalysis
+        } // ReSharper disable Unity.PerformanceAnalysis
         public IEnumerator StartContext(IStateMachine sm)
         {
-            print("Now in spawn state");
+            Debug.Log("Now in spawn state");
             yield return null;
         }
     }

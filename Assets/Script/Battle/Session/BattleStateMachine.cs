@@ -1,12 +1,8 @@
-using System;
-using System.Collections.Generic;
 using cofydev.util.StateMachine;
-using UnityEditor.UI;
-using UnityEngine;
 
 namespace CM.Battle.Session
 {
-    public class BattleStateMachine : UnityStateMachine 
+    public class BattleStateMachine : UnityStateMachine
     {
         private void Awake()
         {
