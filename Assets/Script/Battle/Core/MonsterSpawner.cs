@@ -1,17 +1,26 @@
-﻿using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Script.Battle.Core
 {
     public class MonsterSpawner : MonoBehaviour
     {
-           
-        public void Spawn(List<GameObject> monsters)
+        [SerializeField] private Transform redSpawnPos;
+        [SerializeField] private Transform blueSpawnPos;
+
+        public GameObject Spawn(EBattleSide side, GameObject monster)
         {
-            foreach (var monster in monsters)
+            var spawnPos = GetSpawnPosBySide(side);
+            return Instantiate(monster, spawnPos);
+        }
+
+        private Transform GetSpawnPosBySide(EBattleSide side)
+        {
+            return side switch
             {
-                Instantiate(monster);
-            }
-        } 
+                EBattleSide.RED => redSpawnPos,
+                EBattleSide.BLUE => blueSpawnPos,
+                _ => null
+            };
+        }
     }
 }

@@ -12,7 +12,7 @@ namespace Script.Battle.Core
 
         private void Awake()
         {
-            instanceBattleMonsters = new Dictionary<EBattleSide, List<GameObject>>
+            battleMonsters = new Dictionary<EBattleSide, List<GameObject>>
             {
                 { EBattleSide.RED, new List<GameObject> { monster_1 } },
                 { EBattleSide.BLUE, new List<GameObject> { monster_2 } }
@@ -22,11 +22,18 @@ namespace Script.Battle.Core
         #endregion
 
 
-        private Dictionary<EBattleSide, List<GameObject>> instanceBattleMonsters;
+        private Dictionary<EBattleSide, List<GameObject>> battleMonsters;
 
-        public List<GameObject> GetSideMonsters(EBattleSide side)
+        public void SpawnAllMonsterBySide(EBattleSide side)
         {
-            return instanceBattleMonsters[side];
+            var monsterSpawner = GameObject.FindGameObjectWithTag("Spawner").GetComponent<MonsterSpawner>();
+
+            var monsterPrefabs = battleMonsters[side];
+           
+            foreach (var monsterPrefab in monsterPrefabs)
+            {
+                monsterSpawner.Spawn(side, monsterPrefab);
+            }
         }
     }
 }

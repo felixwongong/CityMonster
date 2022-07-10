@@ -10,7 +10,6 @@ namespace CM.Battle.Session
     public class DialogueState : MonoBehaviour, IStateContext
     {
         //REF
-        private GameMode gameMode;
         [SerializeField] private DialogueUI dialogueUI;
         
         // CONFIG 
@@ -20,18 +19,13 @@ namespace CM.Battle.Session
 
         [SerializeField] private string BattleEndMsg;
 
-        private void Awake()
-        {
-            gameMode = GameObject.FindWithTag("GameMode")?.GetComponent<GameMode>();
-        }
-
         public IEnumerator StartContext(IStateMachine sm)
         {
             Debug.Log("Now in Dialogue State");
             
             dialogueUI.gameObject.SetActive(true);
             
-            string msg = GetMsgByGameState(gameMode.curBattleState);
+            string msg = GetMsgByGameState(GameMode.curBattleState);
             
             yield return dialogueUI.SetDialogueText(msg, true);
             

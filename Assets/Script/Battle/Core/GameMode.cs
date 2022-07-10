@@ -7,6 +7,6 @@ namespace Script.Battle.Core
 {
     public class GameMode : MonoBehaviour
     {
-        public EBattleState curBattleState = EBattleState.START;
+        public static EBattleState curBattleState = EBattleState.START;
     }
 }
