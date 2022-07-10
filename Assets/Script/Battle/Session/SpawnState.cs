@@ -1,23 +1,29 @@
 using System.Collections;
+using System.Collections.Generic;
 using cofydev.util.StateMachine;
+using Script.Battle.Core;
 using UnityEngine;
 
 namespace CM.Battle.Session
 {
     public class SpawnState : MonoBehaviour, IStateContext
     {
-        // Start is called before the first frame update
-        private void Start()
-        {
-        }
-
-        // Update is called once per frame
-        private void Update()
-        {
-        } // ReSharper disable Unity.PerformanceAnalysis
         public IEnumerator StartContext(IStateMachine sm)
         {
-            Debug.Log("Now in spawn state");
+            var monsterHandler = GameObject.FindGameObjectWithTag("GameMode").GetComponent<BattleMonsterHandler>();
+            var spawner = GameObject.FindGameObjectWithTag("Spawner");
+            var monsterSpawner = spawner.GetComponent<MonsterSpawner>();
+
+
+            List<GameObject> redSideMonsters = monsterHandler.GetSideMonsters(EBattleSide.RED);
+            if (redSideMonsters != null)
+                monsterSpawner.Spawn(redSideMonsters);    
+            
+            List<GameObject> blueSideMonsters = monsterHandler.GetSideMonsters(EBattleSide.BLUE);
+            if (blueSideMonsters != null)
+                monsterSpawner.Spawn(blueSideMonsters);    
+            
+            
             yield return null;
         }
     }

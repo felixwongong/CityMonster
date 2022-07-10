@@ -29,20 +29,26 @@ namespace CM.Battle.Session
         {
             Debug.Log("Now in Dialogue State");
             
-            string msg = GetMsgByGameState(gameMode.GetCurBattleState());
-            dialogueUI.SetDialogueText(msg, true);
+            dialogueUI.gameObject.SetActive(true);
+            
+            string msg = GetMsgByGameState(gameMode.curBattleState);
+            
+            yield return dialogueUI.SetDialogueText(msg, true);
             
             yield return new WaitForSeconds(DialogueWaitTime);
+            
+            dialogueUI.gameObject.SetActive(false);
+            
             sm.GoToNextState(GetComponent<SpawnState>());
         }
 
-        private string GetMsgByGameState(GameMode.BattleState battleState)
+        private string GetMsgByGameState(EBattleState battleState)
         {
             switch (battleState)
             {
-                case GameMode.BattleState.START:
+                case EBattleState.START:
                     return BattleStartMsg;
-                case GameMode.BattleState.END:
+                case EBattleState.END:
                     return BattleEndMsg;
             }
 

@@ -10,17 +10,19 @@ namespace CM.UI
         [SerializeField] private TextMeshProUGUI text;
 
         // CONFIG
+        [Range(0.01f, 0.10f)]
         [SerializeField] private float typingSpeed = 0.06f;
-        public void SetDialogueText(string content, bool isTyping = false)
+        public IEnumerator SetDialogueText(string content, bool isTyping = false)
         {
             text.SetText("");
             if (!isTyping)
             {
                 text.SetText(content); 
+                yield return null;
             }
             else
             {
-                StartCoroutine(TypeTextAnim(content));
+                yield return StartCoroutine(TypeTextAnim(content));
             }
         }
 
