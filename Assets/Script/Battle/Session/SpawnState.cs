@@ -9,7 +9,7 @@ namespace CM.Battle.Session
     {
         public IEnumerator StartContext(IStateMachine sm)
         {
-            var monsterHandler = GameObject.FindGameObjectWithTag("GameMode").GetComponent<BattleMonsterHandler>();
+            var monsterHandler = GameObject.FindGameObjectWithTag("BattleMonsterHandler").GetComponent<BattleMonsterHandler>();
 
             if (GameMode.curBattleState == EBattleState.START)
             {

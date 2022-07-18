@@ -7,15 +7,15 @@ namespace Script.Battle.Core
     {
         #region DEBUG
 
-        [SerializeField] private GameObject monster_1;
-        [SerializeField] private GameObject monster_2;
+        [SerializeField] private List<GameObject> redSideMonsters;
+        [SerializeField] private List<GameObject> blueSideMonsters;
 
         private void Awake()
         {
             battleMonsters = new Dictionary<EBattleSide, List<GameObject>>
             {
-                { EBattleSide.RED, new List<GameObject> { monster_1 } },
-                { EBattleSide.BLUE, new List<GameObject> { monster_2 } }
+                { EBattleSide.RED, redSideMonsters},
+                { EBattleSide.BLUE, blueSideMonsters}
             };
         }
 
