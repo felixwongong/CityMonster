@@ -10,11 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2267914f72faea34c99551856d4af3e9, type: 3}
-  m_Name: Bat
+  m_Name: Bee
   m_EditorClassIdentifier: 
-  genericID: 111
-  genericName: bat
+  genericID: 222
+  genericName: Bee
   characterForms:
-  - formLevel: 0
-    formCharacterPrefab: {fileID: 1162074717683033587, guid: c60aa9f7bac665448b358145d95a6db4,
-      type: 3}
+  - {fileID: 3198499350609119052, guid: 9992beb367802434fbe4638bb61476bb, type: 3}

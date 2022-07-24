@@ -2,20 +2,17 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Script.Character
+namespace Script.Monster
 {
-    [CreateAssetMenu(fileName = "New Character", menuName = "Character/Monster Object")]
+    [CreateAssetMenu(fileName = "New Character", menuName = "Character/Monster/Monster Object", order = 1)]
     public class MonsterSO : ScriptableObject
     {
-        [SerializeField] private string genericID;
         [SerializeField] private string genericName;
-        [SerializeField] private List<MonsterFormSO> characterForms;
+        [SerializeField] private List<GameObject> characterForms;
 
-        [Serializable]
-        public class MonsterFormSO
+        public GameObject GetMonsterObject(int level)
         {
-            public int formLevel;
-            public GameObject formCharacterPrefab;
+            return characterForms[level];
         }
     }
 }
