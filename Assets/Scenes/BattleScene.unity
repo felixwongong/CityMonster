@@ -322,9 +322,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   monsterDictionary: {fileID: 11400000, guid: c216d95c3902c79408faca8087257d3c, type: 2}
   redSideMonsters:
-  - {fileID: 1162074717683033587, guid: c60aa9f7bac665448b358145d95a6db4, type: 3}
+  - {fileID: 1845649453278553009, guid: a7aa5bc2eeb26db43908410e69ae6e25, type: 3}
   blueSideMonsters:
-  - {fileID: 2156180079196364993, guid: 925d3151938a8f94fb61678f556ba81e, type: 3}
+  - {fileID: 8499223262958991759, guid: 67297e018fc206444b6569d7ae4749a6, type: 3}
 --- !u!1 &410087039
 GameObject:
   m_ObjectHideFlags: 0
@@ -516,7 +516,7 @@ PrefabInstance:
     - target: {fileID: 2254703449260589892, guid: 214a9442debd55b4ea779fd846e84eb1,
         type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 0.022184836
       objectReference: {fileID: 0}
     - target: {fileID: 2254703449260589892, guid: 214a9442debd55b4ea779fd846e84eb1,
         type: 3}
@@ -898,7 +898,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 0.5625, y: 1}
+    m_SensorSize: {x: 0.4620853, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0

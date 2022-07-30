@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2267914f72faea34c99551856d4af3e9, type: 3}
   m_Name: Bat
   m_EditorClassIdentifier: 
-  genericID: 111
   genericName: bat
   characterForms:
-  - {fileID: 1162074717683033587, guid: c60aa9f7bac665448b358145d95a6db4, type: 3}
+  - {fileID: 1845649453278553009, guid: a7aa5bc2eeb26db43908410e69ae6e25, type: 3}
