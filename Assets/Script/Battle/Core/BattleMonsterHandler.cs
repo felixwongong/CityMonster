@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
-using Script.Monster;
 using Script.Core;
+using Script.Monster;
 using UnityEngine;
 
 namespace Script.Battle.Core
@@ -9,15 +9,18 @@ namespace Script.Battle.Core
     {
         //CONFIG
         [SerializeField] private MonsterSODictionary monsterDictionary;
-        
+
         //STATE
-        private Dictionary<EBattleSide, List<GameObject>> battleMonsters;
+        private Dictionary<EBattleSide, List<GameObject>> battleMonsterPrefabs;
+        private Dictionary<EBattleSide, List<GameObject>> battleMonsterInstances;
 
         private void Awake()
         {
-            battleMonsters = new Dictionary<EBattleSide, List<GameObject>>();
+            battleMonsterPrefabs = new Dictionary<EBattleSide, List<GameObject>>();
+            battleMonsterInstances = new Dictionary<EBattleSide, List<GameObject>>();
+
             var monsterContainers = FindObjectsOfType<EntityMonsterContainer>();
-            
+
             // DEBUG
             if (monsterContainers.Length < 2)
             {
@@ -29,31 +32,50 @@ namespace Script.Battle.Core
             for (var i = 0; i < monsterContainers.Length; i += 2)
             {
                 SetSideBattleMonster(EBattleSide.RED, monsterContainers[i].GetEntityMonsterSnapshots());
-                SetSideBattleMonster(EBattleSide.BLUE, monsterContainers[i+1].GetEntityMonsterSnapshots());
+                SetSideBattleMonster(EBattleSide.BLUE, monsterContainers[i + 1].GetEntityMonsterSnapshots());
             }
         }
 
-        public void SetSideBattleMonster(EBattleSide side, List<MonsterSnapshot> monsterSnapshots)
+        private void SetSideBattleMonster(EBattleSide side, List<MonsterSnapshot> monsterSnapshots)
         {
             foreach (var monsterSnapshot in monsterSnapshots)
             {
-                if (!battleMonsters.ContainsKey(side))
-                {
-                    battleMonsters[side] = new List<GameObject>();
-                }
-                battleMonsters[side].Add(monsterDictionary.GetMonster(monsterSnapshot.monsterId, monsterSnapshot.level));
+                if (!battleMonsterPrefabs.ContainsKey(side)) battleMonsterPrefabs[side] = new List<GameObject>();
+                battleMonsterPrefabs[side]
+                    .Add(monsterDictionary.GetMonster(monsterSnapshot.monsterId, monsterSnapshot.level));
             }
         }
-        
+
         public void SpawnAllMonsterBySide(EBattleSide side)
         {
             var monsterSpawner = GameObject.FindGameObjectWithTag("Spawner").GetComponent<MonsterSpawner>();
 
-            var monsterPrefabs = battleMonsters[side];
+            var monsterPrefabs = battleMonsterPrefabs[side];
 
-            foreach (var monsterPrefab in monsterPrefabs) monsterSpawner.Spawn(side, monsterPrefab);
+            foreach (var monsterPrefab in monsterPrefabs)
+            {
+                if (!battleMonsterInstances.ContainsKey(side)) battleMonsterInstances[side] = new List<GameObject>();
+                battleMonsterInstances[side].Add(monsterSpawner.Spawn(side, monsterPrefab));
+            }
         }
 
+        public void SetMonstersInitPos()
+        {
+            for (int i = 0; i < battleMonsterInstances[EBattleSide.RED].Count; i++)
+            {
+                var monsterGO = battleMonsterInstances[EBattleSide.RED][i];
+                var controller = monsterGO.GetComponent<Controller>();
+                print(battleMonsterInstances[EBattleSide.BLUE][i]);
+                controller.LookToTarget(battleMonsterInstances[EBattleSide.BLUE][i]);
+            }
+            
+            for (int i = 0; i < battleMonsterInstances[EBattleSide.BLUE].Count; i++)
+            {
+                var monsterGO = battleMonsterInstances[EBattleSide.BLUE][i];
+                var controller = monsterGO.GetComponent<Controller>();
+                controller.LookToTarget(battleMonsterInstances[EBattleSide.RED][i]);
+            }
+        }
         #region DEBUG
 
         [SerializeField] private List<GameObject> redSideMonsters;
@@ -61,7 +83,7 @@ namespace Script.Battle.Core
 
         private void SetupTestBattleMonsters()
         {
-            battleMonsters = new Dictionary<EBattleSide, List<GameObject>>
+            battleMonsterPrefabs = new Dictionary<EBattleSide, List<GameObject>>
             {
                 { EBattleSide.RED, redSideMonsters },
                 { EBattleSide.BLUE, blueSideMonsters }

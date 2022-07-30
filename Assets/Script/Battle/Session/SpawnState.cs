@@ -15,6 +15,8 @@ namespace CM.Battle.Session
             {
                 monsterHandler.SpawnAllMonsterBySide(EBattleSide.RED);
                 monsterHandler.SpawnAllMonsterBySide(EBattleSide.BLUE);
+                
+                monsterHandler.SetMonstersInitPos();
             }
             
             yield return null;
