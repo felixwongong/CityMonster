@@ -1,4 +1,4 @@
-﻿namespace Script.Battle.Core
+﻿namespace CM.Battle.Core
 {
     public enum EBattleState
     {

@@ -2,9 +2,8 @@
 
 namespace CM.Battle.Core
 {
-    public enum EBattleSide
+    public class Fighter : MonoBehaviour
     {
-       RED,
-       BLUE
+        
     }
 }

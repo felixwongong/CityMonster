@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace Script.Battle.Core
+namespace CM.Battle.Core
 {
     [RequireComponent(typeof(Rigidbody))]
     public class Controller : MonoBehaviour

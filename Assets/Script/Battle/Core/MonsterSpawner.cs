@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
-using Script.Monster;
+using CM.Monster;
 
-namespace Script.Battle.Core
+namespace CM.Battle.Core
 {
     public class MonsterSpawner : MonoBehaviour
     {

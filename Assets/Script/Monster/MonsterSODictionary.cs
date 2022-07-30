@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
 
-namespace Script.Monster
+namespace CM.Monster
 {
     [CreateAssetMenu(fileName = "Create Monster Dictionary", menuName = "Character/Monster/Monster Dictionary", order = 0)]
     public class MonsterSODictionary : ScriptableObject

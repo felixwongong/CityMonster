@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Script.Core
+namespace CM.Core
 {
     public class EntityMonsterContainer : MonoBehaviour
     {

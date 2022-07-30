@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
 
-namespace Script.Battle.Core
+namespace CM.Battle.Core
 {
     public class GameMode : MonoBehaviour
     {

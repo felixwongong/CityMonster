@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Script.Core
+namespace CM.Core
 {
     [System.Serializable]
     public struct MonsterSnapshot

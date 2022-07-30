@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
-using Script.Core;
-using Script.Monster;
+using CM.Core;
+using CM.Monster;
 using UnityEngine;
 
-namespace Script.Battle.Core
+namespace CM.Battle.Core
 {
     public class BattleMonsterHandler : MonoBehaviour
     {

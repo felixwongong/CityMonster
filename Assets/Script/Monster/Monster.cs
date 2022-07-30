@@ -1,7 +1,7 @@
-﻿using Script.Core;
+﻿using CM.Core;
 using UnityEngine;
 
-namespace Script.Monster
+namespace CM.Monster
 {
     /// <summary>
     ///  Script hold by in-game monster, which is responsible for spawning monsters model in runtime

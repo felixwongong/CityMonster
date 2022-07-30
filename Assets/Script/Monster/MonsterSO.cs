@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Script.Monster
+namespace CM.Monster
 {
     [CreateAssetMenu(fileName = "New Character", menuName = "Character/Monster/Monster Object", order = 1)]
     public class MonsterSO : ScriptableObject

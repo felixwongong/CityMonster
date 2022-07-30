@@ -1,14 +1,18 @@
+using System;
 using System.Collections;
 using cofydev.util.StateMachine;
-using Script.Battle.Core;
+using CM.Battle.Core;
 using UnityEngine;
 
 namespace CM.Battle.Session
 {
+    [RequireComponent(typeof(ActionState))]
     public class SpawnState : MonoBehaviour, IStateContext
     {
         public IEnumerator StartContext(IStateMachine sm)
         {
+            Debug.Log("Now in Spawn State");
+            
             var monsterHandler = GameObject.FindGameObjectWithTag("BattleMonsterHandler").GetComponent<BattleMonsterHandler>();
 
             if (GameMode.curBattleState == EBattleState.START)
@@ -19,7 +23,8 @@ namespace CM.Battle.Session
                 monsterHandler.SetMonstersInitPos();
             }
             
-            yield return null;
+            sm.GoToNextState(GetComponent<ActionState>());
+            yield break;
         }
     }
 }
