@@ -12,12 +12,12 @@ namespace Script.Battle.Core
 
         //STATE
         private Dictionary<EBattleSide, List<GameObject>> battleMonsterPrefabs;
-        private Dictionary<EBattleSide, List<GameObject>> battleMonsterInstances;
+        private Dictionary<EBattleSide, List<Monster.Monster>> battleMonsterInstances;
 
         private void Awake()
         {
             battleMonsterPrefabs = new Dictionary<EBattleSide, List<GameObject>>();
-            battleMonsterInstances = new Dictionary<EBattleSide, List<GameObject>>();
+            battleMonsterInstances = new Dictionary<EBattleSide, List<Monster.Monster>>();
 
             var monsterContainers = FindObjectsOfType<EntityMonsterContainer>();
 
@@ -54,7 +54,7 @@ namespace Script.Battle.Core
 
             foreach (var monsterPrefab in monsterPrefabs)
             {
-                if (!battleMonsterInstances.ContainsKey(side)) battleMonsterInstances[side] = new List<GameObject>();
+                if (!battleMonsterInstances.ContainsKey(side)) battleMonsterInstances[side] = new List<Monster.Monster>();
                 battleMonsterInstances[side].Add(monsterSpawner.Spawn(side, monsterPrefab));
             }
         }
@@ -66,14 +66,14 @@ namespace Script.Battle.Core
                 var monsterGO = battleMonsterInstances[EBattleSide.RED][i];
                 var controller = monsterGO.GetComponent<Controller>();
                 print(battleMonsterInstances[EBattleSide.BLUE][i]);
-                controller.LookToTarget(battleMonsterInstances[EBattleSide.BLUE][i]);
+                controller.LookToTarget(battleMonsterInstances[EBattleSide.BLUE][i].gameObject);
             }
             
             for (int i = 0; i < battleMonsterInstances[EBattleSide.BLUE].Count; i++)
             {
                 var monsterGO = battleMonsterInstances[EBattleSide.BLUE][i];
                 var controller = monsterGO.GetComponent<Controller>();
-                controller.LookToTarget(battleMonsterInstances[EBattleSide.RED][i]);
+                controller.LookToTarget(battleMonsterInstances[EBattleSide.RED][i].gameObject);
             }
         }
         #region DEBUG

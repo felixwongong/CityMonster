@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using Script.Monster;
 
 namespace Script.Battle.Core
 {
@@ -7,10 +8,14 @@ namespace Script.Battle.Core
         [SerializeField] private Transform redSpawnPos;
         [SerializeField] private Transform blueSpawnPos;
 
-        public GameObject Spawn(EBattleSide side, GameObject monster)
+        [SerializeField] private Monster.Monster monsterPrefab;
+
+        public Monster.Monster Spawn(EBattleSide side, GameObject monster)
         {
             var spawnPos = GetSpawnPosBySide(side);
-            return Instantiate(monster, spawnPos);
+            var monsterParent = Instantiate(monsterPrefab, spawnPos);
+            monsterParent.SpawnChildMonster(monster);
+            return monsterParent;
         }
 
         private Transform GetSpawnPosBySide(EBattleSide side)

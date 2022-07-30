@@ -8,8 +8,9 @@ namespace Script.Monster
     /// </summary>
     public class Monster : MonoBehaviour
     {
-        public void SpawnMonsterObjBySnapshot(MonsterSnapshot snapshot)
+        public void SpawnChildMonster(GameObject monster)
         {
+            Instantiate(monster, transform);
         }
     }
 }

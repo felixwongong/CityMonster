@@ -3,6 +3,7 @@ using UnityEngine;
 
 namespace Script.Battle.Core
 {
+    [RequireComponent(typeof(Rigidbody))]
     public class Controller : MonoBehaviour
     {
         private Rigidbody rb;
